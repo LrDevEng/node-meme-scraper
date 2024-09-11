@@ -6,12 +6,6 @@ import { parse } from 'node-html-parser';
 const MEME_URL = 'https://memegen-link-examples-upleveled.netlify.app/';
 const MEME_FOLDER = './memes/';
 
-// Create memes directory if necessary
-const memePath = process.cwd() + '\\memes';
-if (!fs.existsSync(memePath)) {
-  fs.mkdirSync(memePath);
-}
-
 // Wrapping https get request in promise that resolves once all data has been received
 function asyncHttpsGet(url, encoding) {
   return new Promise((resolve, reject) => {
