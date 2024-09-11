@@ -4,5 +4,4 @@ npm-debug.log*
 
 .eslintcache
 *.tsbuildinfo
-memes/*
-!memes/README.md
+memes/
