@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      cli-progress:
+        specifier: ^3.12.0
+        version: 3.12.0
       node-html-parser:
         specifier: ^6.1.13
         version: 6.1.13
@@ -473,6 +476,10 @@ packages:
 
   clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
+    engines: {node: '>=4'}
+
+  cli-progress@3.12.0:
+    resolution: {integrity: sha512-tRkV3HJ1ASwm19THiiLIXLO7Im7wlTuKnvkYaTkyoAPefqjNg7W7DHKUlGRxy9vxDvbyCYQkQozvptuMkGCg8A==}
     engines: {node: '>=4'}
 
   color-convert@1.9.3:
@@ -2348,6 +2355,10 @@ snapshots:
   clean-regexp@1.0.0:
     dependencies:
       escape-string-regexp: 1.0.5
+
+  cli-progress@3.12.0:
+    dependencies:
+      string-width: 4.2.3
 
   color-convert@1.9.3:
     dependencies:
