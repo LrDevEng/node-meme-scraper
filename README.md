@@ -9,3 +9,6 @@ When running this application it will download the first 10 images (memes) from 
 Run the application from the terminal:
 
 `node index.js`
+
+![grafik](https://github.com/user-attachments/assets/3eb98f42-e64a-4db8-bf01-4d19a65d44b6)
+
