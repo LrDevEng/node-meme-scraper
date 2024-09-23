@@ -3,12 +3,12 @@ import { get } from 'node:https';
 import cliProgress from 'cli-progress';
 import { parse } from 'node-html-parser';
 
-const MEME_URL = 'https://memegen-link-examples-upleveled.netlify.app/';
-const MEME_FOLDER = './memes/';
+const memeUrl = 'https://memegen-link-examples-upleveled.netlify.app/';
+const memeFolder = './memes/';
 
 // Create memes directory if necessary
-if (!fs.existsSync(MEME_FOLDER)) {
-  fs.mkdirSync(MEME_FOLDER);
+if (!fs.existsSync(memeFolder)) {
+  fs.mkdirSync(memeFolder);
 }
 
 // Wrapping https get request in promise that resolves once all data has been received
@@ -44,7 +44,7 @@ console.log('\n Downloading images ...\n');
 progressBar.start(10, 0);
 
 // Make https get request to meme url and wait until all html data is received
-const htmlPageAsString = await asyncHttpsGet(MEME_URL, 'utf-8');
+const htmlPageAsString = await asyncHttpsGet(memeUrl, 'utf-8');
 // Parse the html string data into an htmlElement object (library: node-html-parser)
 const htmlRoot = parse(htmlPageAsString);
 
@@ -57,13 +57,11 @@ const allImagesSrc = allImages.map((imgHtmlElement) => {
 
 // Load the first 10 images and save to memes folder in local file system
 for (let i = 0; i < 10; i++) {
-  const image = await asyncHttpsGet(allImagesSrc[i], 'base64');
-  const imageBuffer = Buffer.from(image, 'base64');
-  const fileName = (i + 1).toString().padStart(2, '0') + '.jpg';
-
-  fs.writeFile(MEME_FOLDER + fileName, imageBuffer, (error) => {
-    if (error) console.log(error);
-  });
+  fs.writeFileSync(
+    memeFolder + (i + 1).toString().padStart(2, '0') + '.jpg',
+    await asyncHttpsGet(allImagesSrc[i], 'base64'),
+    'base64',
+  );
 
   progressBar.increment();
 }
